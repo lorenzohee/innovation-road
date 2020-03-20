@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "http://inno.com:4040/api/",
+        "secure": false,
+        "pathRewrite": {"^/api": ""}
+    }
+}

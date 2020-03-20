@@ -1,0 +1,41 @@
+<div class="container">
+  <!-- Section: Blog v.4 -->
+  <section class="my-5">
+    <div *ngFor="let blog of blogs$ | async" class="bg-white px-3 py-3 my-4 z-depth-1-half">
+      <!-- Grid row -->
+      <div class="row">
+        <!-- Grid column -->
+        <div [class]=" blog.bannerUrl=='' ? 'col-12' : 'col-lg-7 col-xl-8'">
+          <!-- Post title -->
+          <h5 class="font-weight-bold mb-3"><a [routerLink]="['/blogs', blog._id]">{{blog.title}}</a></h5>
+          <!-- Excerpt -->
+          <p class="dark-grey-text">{{ blog.content | htmlFormat:'nohtml' | slice:0:300 }}</p>
+          <!-- Post data -->
+          <p><a class="font-weight-bold">{{(blog.blogType || '') | blogType}}</a>,
+            {{blog.createdAt | date:"yyyy-MM-dd"}}</p>
+        </div>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-lg-5 col-xl-4" *ngIf="blog.bannerUrl!=''">
+          <!-- Featured image -->
+          <div class="view overlay rounded mb-lg-0 mb-4 waves-light" mdbWavesEffect>
+            <img class="img-fluid" src="{{blog.bannerUrl || '../../../../../assets/no-page.jpeg'}}" alt="image">
+            <a [routerLink]="['/blogs', blog._id]">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Blog v.4 -->
+
+  <app-pagination [icur]="currentPage" [total]="blogCount$ | async" *ngIf="blogCount$"></app-pagination>
+
+</div>
+<button mat-fab color="warn" class="scrollBtn" (click)='scrollTop()'
+  style="right:35px; bottom:35px;position: fixed; z-index: 9999">
+  <mdb-icon fas icon="arrow-up"></mdb-icon>
+</button>

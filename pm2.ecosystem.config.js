@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "innovationRoadApi",
+      name: "innovationRoadFront",
       script: "./dist/server/main.js",
       watch: true,
       env_development: {

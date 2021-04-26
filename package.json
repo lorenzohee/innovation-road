@@ -1,6 +1,6 @@
 {
   "name": "innovation-road",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "scripts": {
     "serve": "pm2 start ./pm2.ecosystem.config.js --env production",
     "ng": "ng",
